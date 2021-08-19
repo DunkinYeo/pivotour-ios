@@ -1,22 +1,20 @@
 package app.pivo.tour.tests;
 
-import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.IOSElement;
 
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
+
+import app.pivo.tour.views.CreateTour.CaptureView;
+import app.pivo.tour.views.CreateTour.ConnectPodView;
+import app.pivo.tour.views.CreateTour.EditFloorsView;
+import app.pivo.tour.views.CreateTour.EditTourView;
+import app.pivo.tour.views.CreateTour.ListingDetailsView;
+import app.pivo.tour.views.CreateTour.MyToursView;
+import app.pivo.tour.views.CreateTour.ReviewCapturesView;
 
 import static org.junit.Assert.*;
 
 import java.util.HashMap;
-import app.pivo.tour.views.CaptureView;
-import app.pivo.tour.views.ConnectPodView;
-import app.pivo.tour.views.EditFloorsView;
-import app.pivo.tour.views.EditTourView;
-import app.pivo.tour.views.ListingDetailsView;
-import app.pivo.tour.views.MyToursView;
-import app.pivo.tour.views.ReviewCapturesView;
-
 import java.time.LocalDateTime; 
 import java.time.format.DateTimeFormatter;
 import java.util.Random;

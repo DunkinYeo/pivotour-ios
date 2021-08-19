@@ -2,11 +2,13 @@ package app.pivo.tour.tests;
 
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.ios.IOSElement;
-import app.pivo.tour.views.VerifyLoginView;
+
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 //import app.pivo.tour.views.MyToursView;
+
+import app.pivo.tour.views.VerifyLogin.VerifyLoginView;
 
 import static org.junit.Assert.*;
 

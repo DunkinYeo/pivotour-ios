@@ -1,4 +1,4 @@
-package app.pivo.tour.views;
+package app.pivo.tour.views.Registration;
 
 import app.pivo.tour.library.TestLibrary;
 

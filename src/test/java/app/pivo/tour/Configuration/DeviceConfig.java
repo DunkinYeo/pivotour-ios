@@ -1,4 +1,4 @@
-package app.pivo.tour.views;
+package app.pivo.tour.Configuration;
 
 public class DeviceConfig {
     public static class dConfiguration {

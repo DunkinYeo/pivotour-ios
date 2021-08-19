@@ -1,5 +1,5 @@
 
-package app.pivo.tour.views;
+package app.pivo.tour.views.CreateTour;
 
 //import javax.persistence.criteria.CriteriaBuilder.Case;
 

@@ -1,4 +1,4 @@
-package app.pivo.tour.views;
+package app.pivo.tour.views.VerifyLogin;
 
 import app.pivo.tour.library.TestLibrary;
 
@@ -7,7 +7,6 @@ import io.appium.java_client.ios.IOSElement;
 
 public class VerifyLoginView extends TestLibrary {
 
-    private final int SECOND5 = 5;
     private final int SECOND10 = 10;
 
     private final String GOOGLE_LOGIN = "GOOGLE LOGIN";
