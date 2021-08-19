@@ -1,7 +1,7 @@
 package app.pivo.tour.views;
 
 import app.pivo.tour.library.TestLibrary;
-import app.pivo.tour.tests.PivoTourTest;
+import app.pivo.tour.tests.CreateTourTest;
 
 import org.openqa.selenium.WebElement;
 
@@ -18,7 +18,7 @@ public class ConnectPodView extends TestLibrary {
     private final String POD = "Pivo";
 
     private final String LOC_CONNECT = "//XCUIElementTypeStaticText[@name='Connect']";
-    private final String LOC_POD = PivoTourTest.podName;
+    private final String LOC_POD = CreateTourTest.podName;
     
     public IOSElement getViewElement(IOSDriver<WebElement> driver, String elementText) {
 

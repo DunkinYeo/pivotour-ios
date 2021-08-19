@@ -1,28 +1,14 @@
 package app.pivo.tour.tests;
 
-import app.pivo.tour.views.*;
-import io.appium.java_client.MobileBy;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.IOSElement;
 
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
-//import android.content.pm.ApplicationInfo;
 
 import static org.junit.Assert.*;
 
-//import java.io.File;
-import java.net.URL;
 import java.util.HashMap;
-import java.util.List;
-
 import app.pivo.tour.views.CaptureView;
 import app.pivo.tour.views.ConnectPodView;
 import app.pivo.tour.views.EditFloorsView;
@@ -36,132 +22,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-public class PivoTourTest extends BaseTest {
-    private IOSDriver<WebElement> driver;
+public class CreateTourTest extends BaseTest {
+    
     static Random rnd = new Random();
     static final HashMap<String, String> scrollUp = new HashMap<String, String>();
     static String currTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
 
-    ///Configs needs to be done manually/////
-    static DeviceConfig.Device device = DeviceConfig.Device.iPhone12Pro;
-    static String appVersion = "1.3.3(2)";
-    public static String podName = "QA-V2-S1";
-    /////////////////////////////////////////
-    static String iOSVersion = device.getInfo().getIOSVersion();
-    static String deviceName = device.getInfo().getDeviceName();
-    static String udid = device.getInfo().getUdid();
-    static boolean hasLiDAR = device.getInfo().getHasLiDAR();
-    static String tourType = "2D";
-
-    @BeforeTest
-    public void setUp() throws Exception {
-
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-
-        // Real device
-        capabilities.setCapability("xcodeOrgId", "4JQH63J424");
-        capabilities.setCapability("xcodeSigningId", "iPhone Developer");
-        capabilities.setCapability("automationName", "XCUITest");
-        capabilities.setCapability("platformName", "iOS");
-        capabilities.setCapability("platformVersion", iOSVersion);
-        capabilities.setCapability("deviceName", deviceName);
-        capabilities.setCapability("bundleId", "app.pivo.ios.tour");
-        capabilities.setCapability("udid", udid);
-
-        try {
-            driver = new IOSDriver<WebElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    @AfterTest
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
-
-     //@Test
-    public void verifyLogin() {
-        try {
-            // Click on Google icon
-            IOSElement btnGoogleLogin = (IOSElement) new WebDriverWait(driver, 30).until(
-                    ExpectedConditions.visibilityOfElementLocated(MobileBy.AccessibilityId("ic button login google")));
-            btnGoogleLogin.click();
-            // Alert to continue google.com page
-            IOSElement alertSNSLogin = (IOSElement) new WebDriverWait(driver, 30)
-                    .until(ExpectedConditions.visibilityOfElementLocated(MobileBy.AccessibilityId("Continue")));
-            alertSNSLogin.click();
-            // Verify if google.com page loaded (check text: "accounts.google.com")
-            IOSElement urlGoogle = (IOSElement) new WebDriverWait(driver, 30).until(ExpectedConditions
-                    .visibilityOfElementLocated(MobileBy.xpath("//XCUIElementTypeOther[@name='URL']")));
-            assertTrue("SNS login with Google", urlGoogle.getText().contains("accounts.google.com"));
-            IOSElement testAccount = (IOSElement) new WebDriverWait(driver, 10).until(ExpectedConditions
-            .visibilityOfElementLocated(MobileBy.AccessibilityId("Test 3i test@3i.ai")));
-            testAccount.click();
-       
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    @Test
-    public void verifyRegistration() {
-
-        String userInputForEmail = "1";
-
-        IOSElement createAccount = (IOSElement) new WebDriverWait(driver, 5).until(ExpectedConditions
-        .visibilityOfElementLocated(MobileBy.xpath("//XCUIElementTypeStaticText[@name='Create account']")));
-        createAccount.click();
-        //create account
-
-        String xcodeFields = "//XCUIElementTypeApplication[@name='Pivo Tour']/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[";
-        String xcodeFieldsSecondHalf = "]/XCUIElementTypeTextField";
-        
-        IOSElement firstName = (IOSElement) new WebDriverWait(driver, 5).until(ExpectedConditions
-        .visibilityOfElementLocated(MobileBy.xpath(xcodeFields + 1 + xcodeFieldsSecondHalf)));
-        firstName.sendKeys("RegistrationTest");
-        
-        IOSElement lastName = (IOSElement) new WebDriverWait(driver, 5).until(ExpectedConditions
-        .visibilityOfElementLocated(MobileBy.xpath(xcodeFields + 2 + xcodeFieldsSecondHalf)));
-        lastName.sendKeys("Automation");
-        
-        
-        IOSElement email = (IOSElement) new WebDriverWait(driver, 5).until(ExpectedConditions
-        .visibilityOfElementLocated(MobileBy.xpath(xcodeFields + 3 + xcodeFieldsSecondHalf)));
-        email.sendKeys("test+" + userInputForEmail + "@gmail.com");
-
-        IOSElement pswd = (IOSElement) new WebDriverWait(driver, 5).until(ExpectedConditions
-        .visibilityOfElementLocated(MobileBy.xpath(xcodeFields + "4]/XCUIElementTypeSecureTextField")));
-        pswd.sendKeys("qwe123");
-
-        IOSElement confirmPswd = (IOSElement) new WebDriverWait(driver, 5).until(ExpectedConditions
-        .visibilityOfElementLocated(MobileBy.xpath(xcodeFields + "5]/XCUIElementTypeSecureTextField")));
-        confirmPswd.sendKeys("qwe123");
-
-        IOSElement checkBox = (IOSElement) new WebDriverWait(driver, 5).until(ExpectedConditions
-        .visibilityOfElementLocated(MobileBy.xpath("//XCUIElementTypeApplication[@name='Pivo Tour']/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther")));
-        checkBox.click();
-
-        IOSElement btnKeyboardReturn = (IOSElement) new WebDriverWait(driver, 5).until(ExpectedConditions
-        .visibilityOfElementLocated(MobileBy.AccessibilityId("Return")));
-            btnKeyboardReturn.click();
-
-        IOSElement register = (IOSElement) new WebDriverWait(driver, 30).until(ExpectedConditions
-        .visibilityOfElementLocated(MobileBy.xpath("//XCUIElementTypeButton[@name='Register']")));
-        register.click();
-        //make it wait after register button is clicked
-        IOSElement confirmCreated = (IOSElement) new WebDriverWait(driver, 30).until(ExpectedConditions
-        .visibilityOfElementLocated(MobileBy.AccessibilityId("Ok")));
-        confirmCreated.click();
-      
-    }
-
-    @Test
+    @Test (groups = {"CreateTourTest"})
     public void verifyCreateTour() {
 
         scrollUp.put("direction", "up");
@@ -248,8 +115,7 @@ public class PivoTourTest extends BaseTest {
             btnFloor.click();
 
             IOSElement btnStartNewFloor = vCapture.getViewElement(driver, "START NEW F");
-            // assertTrue("Floor button not found in 2nd floor", btnFloor != null);
-            // assertTrue("Finish button not found in 2nd floor", btnFinish != null);
+            
             btnStartNewFloor.click();
 
             if (hasLiDAR) {
@@ -509,25 +375,7 @@ public class PivoTourTest extends BaseTest {
             IOSElement txtUploadedTour = vTourAfterUpload.getViewElement(driver, "Title", currTime);
             assertTrue("Uploaded Tour", txtUploadedTour != null);
 
-            // } catch (Exception e) {
-            /*
-             * e.printStackTrace(); fail("Test is incomplete!"); }
-             */
+
         }
     }
-
-    // @Test
-    public void testGuide() {
-
-        try {
-            // Find element
-            List<WebElement> GuideElement = driver.findElementsByAccessibilityId("Guide");
-            Assert.assertEquals(GuideElement.size(), 1);
-            // Click
-            GuideElement.get(0).click();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
 }
