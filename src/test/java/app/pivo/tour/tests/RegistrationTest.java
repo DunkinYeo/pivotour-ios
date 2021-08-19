@@ -7,55 +7,45 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
+import app.pivo.tour.views.RegistrationView;
+
 public class RegistrationTest extends BaseTest {
     @Test (groups = {"RegistrationTest"})
     public void verifyRegistration() {
 
+        RegistrationView vRegView = new RegistrationView();
         String userInputForEmail = "1";
 
-        IOSElement createAccount = (IOSElement) new WebDriverWait(driver, 5).until(ExpectedConditions
-        .visibilityOfElementLocated(MobileBy.xpath("//XCUIElementTypeStaticText[@name='Create account']")));
+        IOSElement createAccount = vRegView.getViewElement(driver, "CREATE ACCOUNT");
         createAccount.click();
         //create account
-
-        String xcodeFields = "//XCUIElementTypeApplication[@name='Pivo Tour']/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[";
-        String xcodeFieldsSecondHalf = "]/XCUIElementTypeTextField";
         
-        IOSElement firstName = (IOSElement) new WebDriverWait(driver, 5).until(ExpectedConditions
-        .visibilityOfElementLocated(MobileBy.xpath(xcodeFields + 1 + xcodeFieldsSecondHalf)));
+        IOSElement firstName = vRegView.getViewElement(driver, "FIRST NAME");
         firstName.sendKeys("RegistrationTest");
         
-        IOSElement lastName = (IOSElement) new WebDriverWait(driver, 5).until(ExpectedConditions
-        .visibilityOfElementLocated(MobileBy.xpath(xcodeFields + 2 + xcodeFieldsSecondHalf)));
+        IOSElement lastName = vRegView.getViewElement(driver, "LAST NAME");
         lastName.sendKeys("Automation");
         
         
-        IOSElement email = (IOSElement) new WebDriverWait(driver, 5).until(ExpectedConditions
-        .visibilityOfElementLocated(MobileBy.xpath(xcodeFields + 3 + xcodeFieldsSecondHalf)));
+        IOSElement email = vRegView.getViewElement(driver, "EMAIL");
         email.sendKeys("test+" + userInputForEmail + "@gmail.com");
 
-        IOSElement pswd = (IOSElement) new WebDriverWait(driver, 5).until(ExpectedConditions
-        .visibilityOfElementLocated(MobileBy.xpath(xcodeFields + "4]/XCUIElementTypeSecureTextField")));
+        IOSElement pswd = vRegView.getViewElement(driver, "PASSWORD");
         pswd.sendKeys("qwe123");
 
-        IOSElement confirmPswd = (IOSElement) new WebDriverWait(driver, 5).until(ExpectedConditions
-        .visibilityOfElementLocated(MobileBy.xpath(xcodeFields + "5]/XCUIElementTypeSecureTextField")));
+        IOSElement confirmPswd = vRegView.getViewElement(driver, "CONFIRM PASSWORD");
         confirmPswd.sendKeys("qwe123");
 
-        IOSElement checkBox = (IOSElement) new WebDriverWait(driver, 5).until(ExpectedConditions
-        .visibilityOfElementLocated(MobileBy.xpath("//XCUIElementTypeApplication[@name='Pivo Tour']/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther")));
+        IOSElement checkBox = vRegView.getViewElement(driver, "CHECK BOX");
         checkBox.click();
 
-        IOSElement btnKeyboardReturn = (IOSElement) new WebDriverWait(driver, 5).until(ExpectedConditions
-        .visibilityOfElementLocated(MobileBy.AccessibilityId("Return")));
-            btnKeyboardReturn.click();
+        IOSElement btnKeyboardReturn = vRegView.getViewElement(driver, "RETURN BUTTON");
+        btnKeyboardReturn.click();
 
-        IOSElement register = (IOSElement) new WebDriverWait(driver, 30).until(ExpectedConditions
-        .visibilityOfElementLocated(MobileBy.xpath("//XCUIElementTypeButton[@name='Register']")));
+        IOSElement register = vRegView.getViewElement(driver, "REGISTER");
         register.click();
         //make it wait after register button is clicked
-        IOSElement confirmCreated = (IOSElement) new WebDriverWait(driver, 30).until(ExpectedConditions
-        .visibilityOfElementLocated(MobileBy.AccessibilityId("Ok")));
+        IOSElement confirmCreated = vRegView.getViewElement(driver, "CONFIRM CREATED");
         confirmCreated.click();
       
     }

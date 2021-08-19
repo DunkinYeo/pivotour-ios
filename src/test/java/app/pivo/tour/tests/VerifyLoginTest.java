@@ -28,7 +28,6 @@ public class VerifyLoginTest extends BaseTest {
             settings.click();
             //check if the account is valid
 
-            
             IOSElement accId = (IOSElement) new WebDriverWait(driver, 30).until(ExpectedConditions
             .visibilityOfElementLocated(MobileBy.AccessibilityId("TesterLive 3i")));
             assertTrue("It is live server",accId != null);
