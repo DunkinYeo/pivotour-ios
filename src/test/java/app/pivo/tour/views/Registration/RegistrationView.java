@@ -7,7 +7,6 @@ import io.appium.java_client.ios.IOSElement;
 
 public class RegistrationView extends TestLibrary {
 
-        String userInputForEmail = "1";
         String xcodeFields = "//XCUIElementTypeApplication[@name='Pivo Tour']/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[";
         String xcodeFieldsSecondHalf = "]/XCUIElementTypeTextField";
         

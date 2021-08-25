@@ -10,7 +10,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 
-import app.pivo.tour.Configuration.DeviceConfig;
+import app.pivo.tour.configuration.DeviceConfig;
 
 import java.io.IOException;
 import java.net.URL;
