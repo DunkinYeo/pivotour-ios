@@ -29,10 +29,28 @@ public class VerifyLoginTest extends BaseTest {
             IOSElement settings = login.getViewElement(driver, "SETTINGS");
             settings.click();
             //check if the account is valid
-
-            IOSElement accId = (IOSElement) new WebDriverWait(driver, 30).until(ExpectedConditions
-            .visibilityOfElementLocated(MobileBy.AccessibilityId("TesterLive 3i")));
-            assertTrue("It is live server",accId != null);
-
+            // IOSElement liveAcc = null;
+            // IOSElement devAcc = null;
+            try{
+                if (login.getViewElement(driver, "LIVE ID").isDisplayed()) {
+                    System.out.println("This server is live");
+                }
+            
+            }
+            catch (Exception e) {
+                System.out.println("Test Live Account not found" + e.getMessage());
+            }
+            finally{
+                try{
+                    if (login.getViewElement(driver, "DEV ID").isDisplayed()) {
+                        System.out.println("This server is dev");
+                    }
+                }
+                    catch(Exception e){
+                        System.out.println("Test Dev Account not found" + e.getMessage());
+                    }
+        
+            }
+            
         }
 }   

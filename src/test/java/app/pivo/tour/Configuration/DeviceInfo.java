@@ -33,10 +33,6 @@ public class DeviceInfo {
         return this.iOSVersion;
     }
 
-    // public String getIOSVersionToString() {
-    //     return Double.toString(this.iOSVersion);
-    // }
-
     public String getDeviceName() {
         return this.deviceName;
     }

@@ -9,9 +9,7 @@ public class RegistrationView extends TestLibrary {
 
         String xcodeFields = "//XCUIElementTypeApplication[@name='Pivo Tour']/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[";
         String xcodeFieldsSecondHalf = "]/XCUIElementTypeTextField";
-        
-
-
+    
 
     private final int SECOND5 = 5;
     

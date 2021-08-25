@@ -24,13 +24,13 @@ public class RegistrationTest extends BaseTest {
         
         
         IOSElement email = vRegView.getViewElement(driver, "EMAIL");
-        email.sendKeys("test.access.ios+" + userInputForEmail + "@gmail.com");
+        email.sendKeys("rpivo164+" + userInputForEmail + "@gmail.com");
 
         IOSElement pswd = vRegView.getViewElement(driver, "PASSWORD");
-        pswd.sendKeys("3iDev8593");
+        pswd.sendKeys("qwe123");
 
         IOSElement confirmPswd = vRegView.getViewElement(driver, "CONFIRM PASSWORD");
-        confirmPswd.sendKeys("3iDev8593");
+        confirmPswd.sendKeys("qwe123");
 
         IOSElement checkBox = vRegView.getViewElement(driver, "CHECK BOX");
         checkBox.click();

@@ -14,12 +14,17 @@ public class VerifyLoginView extends TestLibrary {
     private final String URL_GOOGLE = "URL GOOGLE";
     private final String TEST_ACCOUNT = "TEST ACCOUNT";
     private final String SETTINGS = "SETTINGS";
+    private final String LIVE_ID = "LIVE ID";
+    private final String DEV_ID = "DEV ID";
 
     private final String LOC_GOOGLE_LOGIN = "ic button login google";
     private final String LOC_SNS_LOGIN = "Continue";
     private final String LOC_URL_GOOGLE = "//XCUIElementTypeOther[@name='URL']";
     private final String LOC_TEST_ACCOUNT = "Test 3i test@3i.ai";
     private final String LOC_SETTINGS = "Settings";
+    private final String LOC_LIVE_ID = "TesterLive 3i";
+    private final String LOC_DEV_ID = "Test 3i dev";
+
 
     public IOSElement getViewElement(WebDriver driver, String elementText) {
 
@@ -39,6 +44,12 @@ public class VerifyLoginView extends TestLibrary {
                 break;
             case SETTINGS:
                 element = findElementByAccessibilityIDWithWait(driver, SECOND10, LOC_SETTINGS);
+                break;
+            case LIVE_ID:
+                element = findElementByAccessibilityIDWithWait(driver, 5, LOC_LIVE_ID);
+                break;
+            case DEV_ID:
+                element = findElementByAccessibilityIDWithWait(driver, 5, LOC_DEV_ID);
                 break;
         }
         return element;
