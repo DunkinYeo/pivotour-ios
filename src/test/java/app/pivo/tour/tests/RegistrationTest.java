@@ -10,8 +10,14 @@ public class RegistrationTest extends BaseTest {
     public void verifyRegistration() {
 
         RegistrationView vRegView = new RegistrationView();
+        //this string will be added after email address and used to generate an unique id
         String userInputForEmail = "1";
+        //this is the email address to create a pivo account. Default is rpivo164@gmail.com
+        String emailAdr = "rpivo164+" + userInputForEmail + "@gmail.com";
+        //this is a password that will be used to generate a pivo account
+        String password = "qwe123";
 
+        
         IOSElement createAccount = vRegView.getViewElement(driver, "CREATE ACCOUNT");
         createAccount.click();
         //create account
@@ -22,15 +28,14 @@ public class RegistrationTest extends BaseTest {
         IOSElement lastName = vRegView.getViewElement(driver, "LAST NAME");
         lastName.sendKeys("Automation");
         
-        
         IOSElement email = vRegView.getViewElement(driver, "EMAIL");
-        email.sendKeys("rpivo164+" + userInputForEmail + "@gmail.com");
+        email.sendKeys(emailAdr);
 
         IOSElement pswd = vRegView.getViewElement(driver, "PASSWORD");
-        pswd.sendKeys("qwe123");
-
+        pswd.sendKeys(password);
+        
         IOSElement confirmPswd = vRegView.getViewElement(driver, "CONFIRM PASSWORD");
-        confirmPswd.sendKeys("qwe123");
+        confirmPswd.sendKeys(password);
 
         IOSElement checkBox = vRegView.getViewElement(driver, "CHECK BOX");
         checkBox.click();

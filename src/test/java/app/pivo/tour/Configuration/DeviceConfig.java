@@ -1,12 +1,6 @@
 package app.pivo.tour.configuration;
 
 public class DeviceConfig {
-    public static class dConfiguration {
-        public String iOSVersion;
-        public String deviceName;
-        public String udid;
-        public boolean hasLiDAR;
-    }
 
     public enum Device {
         iPhoneSE2("14.7.1", "iphone SE2", "00008030-001A70802E3B802E", false),
@@ -23,5 +17,4 @@ public class DeviceConfig {
             return this.info;
         }
     }
-    ///Device device = Device.iPhone12Pro; // Change the name of the device accordingly
 }

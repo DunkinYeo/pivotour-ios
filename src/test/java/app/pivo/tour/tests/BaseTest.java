@@ -18,14 +18,14 @@ import java.net.URL;
 public abstract class BaseTest {
 
     //these needs to be manually configured as a pre-condition
-    static DeviceConfig.Device device = DeviceConfig.Device.iPhone12Pro;
-    static String appVersion = "1.3.3(2)";
-    public static String podName = "QA-V2-S1";
+    final static DeviceConfig.Device device = DeviceConfig.Device.iPhone12Pro;
+    final static String appVersion = "1.3.3(6)";
+    final public static String podName = "QA-V2-S1";
     /////////////////////////////////////////
-    static String iOSVersion = device.getInfo().getIOSVersion();
-    static String deviceName = device.getInfo().getDeviceName();
-    static String udid = device.getInfo().getUdid();
-    static boolean hasLiDAR = device.getInfo().getHasLiDAR();
+    final static String iOSVersion = device.getInfo().getIOSVersion();
+    final static String deviceName = device.getInfo().getDeviceName();
+    final static String udid = device.getInfo().getUdid();
+    final static boolean hasLiDAR = device.getInfo().getHasLiDAR();
     static String tourType = "2D";
 
     private static AppiumDriverLocalService service;

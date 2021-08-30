@@ -1,56 +1,52 @@
 package app.pivo.tour.tests;
-
-import io.appium.java_client.MobileBy;
 import io.appium.java_client.ios.IOSElement;
-
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
-//import app.pivo.tour.views.MyToursView;
-
 import app.pivo.tour.views.VerifyLogin.VerifyLoginView;
-
-import static org.junit.Assert.*;
 
 //precondition: User should be logged out
 public class VerifyLoginTest extends BaseTest {
-        @Test (groups = {"VerifyLoginTest"})
-        public void verifyLogin() {
-            VerifyLoginView login = new VerifyLoginView();
-            // Click on Google icon
-            IOSElement googleIcon = login.getViewElement(driver, "GOOGLE LOGIN");
-            googleIcon.click();
-            IOSElement snsLogin = login.getViewElement(driver, "SNS LOGIN");
-            snsLogin.click();
-    
-            IOSElement selectAccount = login.getViewElement(driver, "TEST ACCOUNT");
-            selectAccount.click();
+    @Test (groups = {"VerifyLoginTest"})
+    public void verifyLogin() {
+        boolean isLiveServer = false;
+        VerifyLoginView login = new VerifyLoginView();
+        // Click on Google icon
+        IOSElement googleIcon = login.getViewElement(driver, "GOOGLE LOGIN");
+        googleIcon.click();
+        //Confirm sns login
+        IOSElement snsLogin = login.getViewElement(driver, "SNS LOGIN");
+        snsLogin.click();
+        //you can change account from here
+        IOSElement selectAccount = login.getViewElement(driver, "TEST ACCOUNT");
+        selectAccount.click();
+        //Select settings tab to check the server
+        IOSElement settings = login.getViewElement(driver, "SETTINGS");
+        settings.click();
 
-            IOSElement settings = login.getViewElement(driver, "SETTINGS");
-            settings.click();
-            //check if the account is valid
-            // IOSElement liveAcc = null;
-            // IOSElement devAcc = null;
-            try{
-                if (login.getViewElement(driver, "LIVE ID").isDisplayed()) {
-                    System.out.println("This server is live");
-                }
-            
+        //Try to find live id first
+        try{
+            if (login.getViewElement(driver, "LIVE ID").isDisplayed()) {
+                System.out.println("This server is live");
+                isLiveServer = true;
             }
-            catch (Exception e) {
-                System.out.println("Test Live Account not found" + e.getMessage());
-            }
-            finally{
+        
+        }
+        //Live account is not found
+        catch (Exception e) {
+            System.err.println("Test Live Account not found" + e.getMessage());
+        }
+        finally{
+            //if it is not live server, check if it is a dev server
+            if (isLiveServer == false){
                 try{
                     if (login.getViewElement(driver, "DEV ID").isDisplayed()) {
-                        System.out.println("This server is dev");
+                        System.err.println("This server is dev");                   
                     }
                 }
-                    catch(Exception e){
-                        System.out.println("Test Dev Account not found" + e.getMessage());
-                    }
-        
+                //it is not either live or dev server, or the name is changed
+                catch(Exception e){
+                    System.err.println("Account is both not live or dev account, please check the account name" + e.getMessage());
+                }
             }
-            
         }
-}   
+    }
+}

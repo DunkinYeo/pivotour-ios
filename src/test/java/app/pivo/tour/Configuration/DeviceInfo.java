@@ -12,23 +12,6 @@ public class DeviceInfo {
         this.udid = udid;
         this.hasLiDAR = hasLiDAR;
     }
-
-    public void setIOSVersion(String iOSVersion) {
-        this.iOSVersion = iOSVersion;
-    }
-
-    public void setDeviceName(String deviceName) {
-        this.deviceName = deviceName;
-    }
-
-    public void setUdid(String udid) {
-        this.udid = udid;
-    }
-
-    public void setHasLiDAR(boolean hasLiDAR) {
-        this.hasLiDAR = hasLiDAR;
-    }
-
     public String getIOSVersion() {
         return this.iOSVersion;
     }
